@@ -34,18 +34,18 @@ class MyHomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dynamic Theme Management"),
+        title: const Text("Dynamic Theme Change"),
       ),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            context.read<ThemeCubit>().toggleTheme(!isDarkMode);
-          },
-          child: Text(
-            isDarkMode ? "Light Theme" : "Dark Theme",
-            style: TextStyle(color: isDarkMode ? Colors.white : Colors.black),
-          ),
-        ),
+        child: GestureDetector(
+            onTap: () {
+              context.read<ThemeCubit>().toggleTheme(!isDarkMode);
+            },
+            child: Image.asset(
+              isDarkMode ? "assets/light.png" : "assets/dark.png",
+              height: 50,
+              width: 50,
+            )),
       ),
     );
   }
